@@ -52,7 +52,7 @@
       <div class="romaji">${item.ordinalRomaji}</div>
       <div class="waza">
         <span class="waza-kanji jp">${item.wazaKanji}</span><br>
-        ${item.wazaRomaji} &mdash; ${item.meaningEn}
+        ${item.wazaRomaji} (${item.meaningEn})
       </div>
     `;
     const nextBtn = document.getElementById("btn-flashcard-next");
@@ -90,7 +90,7 @@
 
     const title = document.getElementById("match-title");
     if (mode === "numbersOnly") {
-      title.innerHTML = `Matching &mdash; Numbers Only <span class="jp">数字だけでマッチング</span>`;
+      title.innerHTML = `Matching (Numbers Only) <span class="jp">数字だけでマッチング</span>`;
     } else {
       title.innerHTML = `Matching <span class="jp">マッチング</span>`;
     }
@@ -126,7 +126,7 @@
         card.className = "match-card combo-card jp";
         card.innerHTML = `
           <span class="combo-kanji">${item.ordinalKanji} ${item.wazaKanji}</span>
-          <span class="combo-romaji">${item.ordinalRomaji} &mdash; ${item.wazaRomaji}</span>
+          <span class="combo-romaji">${item.ordinalRomaji}: ${item.wazaRomaji}</span>
         `;
       } else {
         card.className = "match-card kanji-card jp";
@@ -212,13 +212,13 @@
     const input = document.getElementById("type-input");
 
     if (typeMode === "numbersOnly") {
-      title.innerHTML = `Type the Kanji &mdash; Numbers Only <span class="jp">数字だけで入力</span>`;
+      title.innerHTML = `Type the Kanji (Numbers Only) <span class="jp">数字だけで入力</span>`;
       insEn.textContent = "Type the kanji for the number shown.";
       insJp.textContent = "表示された番号の漢字を入力してください。";
       input.placeholder = "漢字を入力 / kanji here";
       input.lang = "ja";
     } else if (typeMode === "romajiNumbersOnly") {
-      title.innerHTML = `Type the Romaji &mdash; Numbers Only <span class="jp">数字だけでローマ字入力</span>`;
+      title.innerHTML = `Type the Romaji (Numbers Only) <span class="jp">数字だけでローマ字入力</span>`;
       insEn.textContent = "Type the full romaji (ordinal name + technique name) for the number shown. The kanji will appear as you type it correctly.";
       insJp.textContent = "表示された番号の正式なローマ字（序数名と技名）を入力してください。正しく入力すると漢字が表示されます。";
       input.placeholder = "e.g. Hachihon-me Ganmen Ate";
@@ -249,7 +249,7 @@
         ? `<span class="num">${item.number}</span>`
         : `
           <span class="num">${item.number}</span>
-          <span class="waza-hint jp">${item.wazaRomaji} &mdash; ${item.wazaKanji}</span>
+          <span class="waza-hint jp">${item.wazaRomaji} (${item.wazaKanji})</span>
         `;
     const feedback = document.getElementById("type-feedback");
     feedback.textContent = "";
