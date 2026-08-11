@@ -1,6 +1,30 @@
 (function () {
   "use strict";
 
+  // ---- password gate ----
+  const SITE_PASSWORD = "SeattleKendoKai";
+  const gate = document.getElementById("password-gate");
+  const passwordForm = document.getElementById("password-form");
+  const passwordInput = document.getElementById("password-input");
+  const passwordError = document.getElementById("password-error");
+
+  if (sessionStorage.getItem("iaido-unlocked") === "true") {
+    gate.classList.add("hidden");
+  }
+
+  passwordForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (passwordInput.value === SITE_PASSWORD) {
+      sessionStorage.setItem("iaido-unlocked", "true");
+      gate.classList.add("hidden");
+      passwordError.textContent = "";
+    } else {
+      passwordError.textContent = "Incorrect password. もう一度お試しください。";
+      passwordInput.value = "";
+      passwordInput.focus();
+    }
+  });
+
   const screens = {
     home: document.getElementById("screen-home"),
     study: document.getElementById("screen-study"),

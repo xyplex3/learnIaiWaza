@@ -1,77 +1,116 @@
 # Iaido Waza Numbers 居合技の数字
 
-A small static site for practicing the Japanese numbers (*Ippon-me* through
-*Jyunihon-me*) used to name the 12 ZNKR Seitei Iai forms, along with each
-form's technique name (*Mae*, *Ushiro*, *Kesa Giri*, ...).
+A bilingual (English / Japanese) browser flashcard app for memorizing the
+Japanese ordinal names, kanji, and technique names of the 12 ZNKR Seitei
+Iai forms.
 
-Two practice modes:
-- **Matching** — pair each number with its kanji.
-- **Type the Kanji** — type the kanji for a given number from memory.
+**Live site:** https://xyplex3.github.io/learnIaiWaza/
 
-No build step, no dependencies — just `index.html`, `style.css`, `data.js`,
-and `app.js`.
+## Overview
 
-## Running it locally
+Seitei Iai students need to know each of the 12 forms by its Japanese
+ordinal number (*Ippon-me* through *Jyunihon-me*), its kanji, and its
+technique name (*Mae*, *Ushiro*, *Kesa Giri*, ...). This site drills that
+recall with six practice modes, drawing five random forms per round from
+the full set of 12. It's a static page with no build step and no
+dependencies, so it runs equally well opened directly from disk or served
+from GitHub Pages.
 
-Just open `index.html` in a browser. If your browser blocks local file
-scripts, serve it instead:
+## Features
+
+- **Six practice modes** — from passive flashcard review to active kanji
+  and romaji recall (see [Usage](#usage))
+- **Bilingual UI** — every screen shows English and Japanese side by side
+- **Randomized rounds** — each round pulls 5 of the 12 forms in random
+  order, so no two sessions look the same
+- **Zero dependencies** — plain HTML, CSS, and JavaScript; nothing to
+  `npm install`
+- **Source-backed content** — numbers, kanji, and technique names are
+  drawn from the official ZNKR instructional manual (see
+  [Content Source](#content-source))
+
+## Installation
+
+### Prerequisites
+
+- A modern web browser (Chrome, Firefox, Safari, or Edge)
+- Python 3.6+ (optional — only needed to serve the files over HTTP instead
+  of opening them directly from disk)
+
+### Quick Install
 
 ```bash
-cd IaidoWazaLearnerSite
+git clone https://github.com/xyplex3/learnIaiWaza.git
+cd learnIaiWaza
+```
+
+### Verification
+
+Open `index.html` in your browser. You should see the "Iaido Waza
+Numbers" home screen with a **Start Practice** button.
+
+## Quick Start
+
+```bash
+# From inside the cloned repo
 python3 -m http.server 8000
 ```
 
-Then visit `http://localhost:8000`.
+Open http://localhost:8000 and click **Start Practice**.
 
-## Hosting on GitHub Pages
+(If your browser doesn't block local file scripts, you can skip the
+server and just double-click `index.html` instead.)
 
-1. **Create a new repository on GitHub** (via the web UI at github.com, or
-   `gh repo create`). Public repos get free Pages hosting.
+## Usage
 
-2. **Initialize git and push this folder**, from inside
-   `IaidoWazaLearnerSite/`:
+From the home screen, click **Start Practice**, then choose one of six
+modes:
 
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit: Iaido waza numbers learner site"
-   git branch -M main
-   git remote add origin https://github.com/<your-username>/<your-repo>.git
-   git push -u origin main
-   ```
+| Option | Mode | What you do |
+|--------|------|--------------|
+| 1 | Flash Cards | Review one card at a time (number, kanji, romaji, technique) and click **Next** |
+| 2 | Matching | Tap a numbered card, then tap the kanji card it matches |
+| 3 | Type the Kanji | Type the kanji for the ordinal number and romaji shown |
+| 4 | Numbers Only Matching | Match a bare number to its full kanji + technique combo, with no romaji hints |
+| 5 | Numbers Only Typing | Type the kanji for a bare number, with no romaji hint |
+| 6 | Type the Romaji (Numbers Only) | Type the full romaji (ordinal name + technique name) from just the number |
 
-   (Replace `<your-username>/<your-repo>` with your actual GitHub username
-   and the repo name you created.)
+Modes 2-6 score your round out of 5 and show a results screen with a
+**New Round** button to try again with a fresh set of forms.
 
-3. **Enable GitHub Pages** for the repo:
-   - On GitHub, go to the repository's **Settings** tab.
-   - In the left sidebar, click **Pages**.
-   - Under **Build and deployment** → **Source**, choose
-     **Deploy from a branch**.
-   - Under **Branch**, choose `main` and folder `/ (root)`, then **Save**.
+## Project Structure
 
-4. **Wait a minute or two**, then refresh the Pages settings page — it will
-   show your live URL, typically:
-
-   ```
-   https://<your-username>.github.io/<your-repo>/
-   ```
-
-## Updating the site later
-
-After making changes locally:
-
-```bash
-git add .
-git commit -m "Describe your change"
-git push
+```
+learnIaiWaza/
+├── index.html   # Screens/markup for all practice modes
+├── style.css    # Styling (dark theme, responsive layout)
+├── data.js      # The 12 ZNKR forms: numbers, kanji, romaji, meanings
+├── app.js       # Screen navigation and practice-mode logic
+├── assets/      # Dojo icon used in the header
+└── README.md
 ```
 
-GitHub Pages redeploys automatically within a minute or so of each push to
-`main`.
+## Deployment
 
-## Content source
+The live site is hosted on GitHub Pages from the `main` branch. To deploy
+your own fork:
+
+1. Push your fork to GitHub.
+2. In the repo, go to **Settings → Pages**.
+3. Under **Build and deployment → Source**, choose **Deploy from a
+   branch**, then set **Branch** to `main` and folder to `/ (root)`.
+4. Save, then wait a minute or two — GitHub will show your live URL at
+   `https://<your-username>.github.io/<your-repo>/`.
+
+Every push to `main` redeploys automatically within about a minute.
+
+## Content Source
 
 Numbers, kanji, and technique names are drawn from *Zen Nippon Kendō
-Renmei Iai (Kaisetsu)* — the All Japan Kendo Federation Iai Instructional
+Renmei Iai (Kaisetsu)*, the All Japan Kendo Federation Iai Instructional
 Manual (English translation by Robert D. Stroud).
+
+## License
+
+No license file is currently included in this repository. All rights
+reserved by default unless a license is added.
