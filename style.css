@@ -60,20 +60,6 @@ body {
   margin-top: 0.15rem;
 }
 
-.dojo-credit {
-  display: inline-block;
-  margin-top: 0.4rem;
-  font-size: 0.8rem;
-  color: var(--fg-dim);
-  text-decoration: none;
-  border-bottom: 1px dotted var(--fg-dim);
-}
-
-.dojo-credit:hover {
-  color: var(--fg);
-  border-bottom-color: var(--fg);
-}
-
 #app {
   width: 100%;
   max-width: 640px;
