@@ -4,6 +4,7 @@
   const screens = {
     home: document.getElementById("screen-home"),
     study: document.getElementById("screen-study"),
+    flashcards: document.getElementById("screen-flashcards"),
     match: document.getElementById("screen-match"),
     type: document.getElementById("screen-type"),
     result: document.getElementById("screen-result"),
@@ -31,30 +32,50 @@
   let roundItems = [];
   let score = 0;
 
-  function renderStudyList() {
-    const list = document.getElementById("study-list");
-    list.innerHTML = "";
-    roundItems.forEach((item) => {
-      const div = document.createElement("div");
-      div.className = "study-item";
-      div.innerHTML = `
-        <div class="num">${item.number}</div>
-        <div class="ordinal-kanji jp">${item.ordinalKanji}</div>
-        <div class="romaji">${item.ordinalRomaji}</div>
-        <div class="waza">
-          <span class="waza-kanji jp">${item.wazaKanji}</span><br>
-          ${item.wazaRomaji} &mdash; ${item.meaningEn}
-        </div>
-      `;
-      list.appendChild(div);
-    });
-  }
-
   function startRound() {
     roundItems = pickRandomFive();
     score = 0;
-    renderStudyList();
     showScreen("study");
+  }
+
+  // ---- Flash cards mode ----
+  let flashcardItems = [];
+  let flashcardIndex = 0;
+
+  function renderFlashcard() {
+    const item = flashcardItems[flashcardIndex];
+    document.getElementById("flashcard-progress").textContent =
+      `${flashcardIndex + 1} / ${flashcardItems.length}`;
+    document.getElementById("flashcard-card").innerHTML = `
+      <div class="num">${item.number}</div>
+      <div class="ordinal-kanji jp">${item.ordinalKanji}</div>
+      <div class="romaji">${item.ordinalRomaji}</div>
+      <div class="waza">
+        <span class="waza-kanji jp">${item.wazaKanji}</span><br>
+        ${item.wazaRomaji} &mdash; ${item.meaningEn}
+      </div>
+    `;
+    const nextBtn = document.getElementById("btn-flashcard-next");
+    const isLast = flashcardIndex === flashcardItems.length - 1;
+    nextBtn.innerHTML = isLast
+      ? `Done <span class="jp">終了</span>`
+      : `Next <span class="jp">次へ</span>`;
+  }
+
+  function startFlashcards() {
+    flashcardItems = pickRandomFive();
+    flashcardIndex = 0;
+    renderFlashcard();
+    showScreen("flashcards");
+  }
+
+  function onFlashcardNext() {
+    if (flashcardIndex < flashcardItems.length - 1) {
+      flashcardIndex++;
+      renderFlashcard();
+    } else {
+      showScreen("study");
+    }
   }
 
   // ---- Matching mode ----
@@ -309,6 +330,9 @@
 
   // ---- wiring ----
   document.getElementById("btn-start").addEventListener("click", startRound);
+  document.getElementById("btn-mode-flashcards").addEventListener("click", startFlashcards);
+  document.getElementById("btn-flashcard-next").addEventListener("click", onFlashcardNext);
+  document.getElementById("btn-home-from-flashcards").addEventListener("click", () => showScreen("study"));
   document.getElementById("btn-mode-match").addEventListener("click", () => startMatching("labeled"));
   document.getElementById("btn-mode-type").addEventListener("click", () => startTyping("labeled"));
   document.getElementById("btn-mode-match-numbers").addEventListener("click", () => startMatching("numbersOnly"));

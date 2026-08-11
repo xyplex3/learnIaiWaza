@@ -35,29 +35,45 @@
 
   <!-- STUDY / MODE SELECT SCREEN -->
   <section id="screen-study" class="screen">
-    <h2>Today's 5 Numbers <span class="jp">今日の5つの数字</span></h2>
-    <div id="study-list" class="study-list"></div>
     <p class="instructions">Choose a practice mode:</p>
     <p class="instructions jp">練習モードを選んでください：</p>
     <div class="mode-buttons">
+      <button id="btn-mode-flashcards" class="btn btn-primary">
+        Option 1: Flash Cards <span class="jp">フラッシュカード</span>
+      </button>
       <button id="btn-mode-match" class="btn btn-primary">
-        Option 1: Matching <span class="jp">マッチング</span>
+        Option 2: Matching <span class="jp">マッチング</span>
       </button>
       <button id="btn-mode-type" class="btn btn-primary">
-        Option 2: Type the Kanji <span class="jp">漢字入力</span>
+        Option 3: Type the Kanji <span class="jp">漢字入力</span>
       </button>
       <button id="btn-mode-match-numbers" class="btn btn-primary">
-        Option 3: Numbers Only Matching <span class="jp">数字だけでマッチング</span>
+        Option 4: Numbers Only Matching <span class="jp">数字だけでマッチング</span>
       </button>
       <button id="btn-mode-type-numbers" class="btn btn-primary">
-        Option 4: Numbers Only Typing <span class="jp">数字だけで入力</span>
+        Option 5: Numbers Only Typing <span class="jp">数字だけで入力</span>
       </button>
       <button id="btn-mode-type-romaji" class="btn btn-primary">
-        Option 5: Type the Romaji &mdash; Numbers Only <span class="jp">数字だけでローマ字入力</span>
+        Option 6: Type the Romaji &mdash; Numbers Only <span class="jp">数字だけでローマ字入力</span>
       </button>
     </div>
     <button id="btn-home-from-study" class="btn btn-secondary">
       &larr; Home <span class="jp">ホーム</span>
+    </button>
+  </section>
+
+  <!-- FLASH CARDS SCREEN -->
+  <section id="screen-flashcards" class="screen">
+    <h2>Flash Cards <span class="jp">フラッシュカード</span></h2>
+    <div id="flashcard-progress" class="type-progress"></div>
+    <div id="flashcard-card" class="study-item flashcard-single"></div>
+    <div class="mode-buttons">
+      <button id="btn-flashcard-next" class="btn btn-primary">
+        Next <span class="jp">次へ</span>
+      </button>
+    </div>
+    <button id="btn-home-from-flashcards" class="btn btn-secondary">
+      &larr; Back <span class="jp">戻る</span>
     </button>
   </section>
 

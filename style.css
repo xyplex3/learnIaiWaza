@@ -220,6 +220,32 @@ h2 .jp {
   font-size: 0.95rem;
 }
 
+.flashcard-single {
+  max-width: 360px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem;
+}
+
+.flashcard-single .num {
+  font-size: 2.4rem;
+}
+
+.flashcard-single .ordinal-kanji {
+  font-size: 2rem;
+}
+
+.flashcard-single .romaji {
+  font-size: 1rem;
+}
+
+.flashcard-single .waza {
+  font-size: 1rem;
+}
+
+.flashcard-single .waza .waza-kanji {
+  font-size: 1.3rem;
+}
+
 /* Matching board */
 .match-board {
   display: grid;
