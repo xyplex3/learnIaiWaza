@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Iaido Waza Numbers 居合技の数字</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <img src="assets/seattle-kendo-kai-icon.png" alt="Seattle Kendo Kai" class="dojo-logo">
+  <h1>Iaido Waza Numbers <span class="jp">居合技の数字</span></h1>
+  <a href="https://www.seattlekendo.org/" target="_blank" rel="noopener" class="dojo-credit">Seattle Kendo Kai</a>
+</header>
+
+<main id="app">
+
+  <!-- HOME SCREEN -->
+  <section id="screen-home" class="screen active">
+    <p class="instructions">
+      Learn the Japanese numbers used to count the 12 ZNKR Seitei Iai forms
+      &mdash; <em>Ippon-me</em> through <em>Jyunihon-me</em> &mdash; along
+      with each form's technique name. Practice with a matching game or by
+      typing the kanji from memory.
+    </p>
+    <p class="instructions jp">
+      全日本剣道連盟制定居合、十二本の技の数え方（一本目〜十二本目）と
+      技の名前を学びます。カード合わせや漢字の入力で練習しましょう。
+    </p>
+    <button id="btn-start" class="btn btn-primary">
+      Start Practice <span class="jp">練習開始</span>
+    </button>
+  </section>
+
+  <!-- STUDY / MODE SELECT SCREEN -->
+  <section id="screen-study" class="screen">
+    <h2>Today's 5 Numbers <span class="jp">今日の5つの数字</span></h2>
+    <div id="study-list" class="study-list"></div>
+    <p class="instructions">Choose a practice mode:</p>
+    <p class="instructions jp">練習モードを選んでください：</p>
+    <div class="mode-buttons">
+      <button id="btn-mode-match" class="btn btn-primary">
+        Option 1: Matching <span class="jp">マッチング</span>
+      </button>
+      <button id="btn-mode-type" class="btn btn-primary">
+        Option 2: Type the Kanji <span class="jp">漢字入力</span>
+      </button>
+      <button id="btn-mode-match-numbers" class="btn btn-primary">
+        Option 3: Numbers Only Matching <span class="jp">数字だけでマッチング</span>
+      </button>
+      <button id="btn-mode-type-numbers" class="btn btn-primary">
+        Option 4: Numbers Only Typing <span class="jp">数字だけで入力</span>
+      </button>
+      <button id="btn-mode-type-romaji" class="btn btn-primary">
+        Option 5: Type the Romaji &mdash; Numbers Only <span class="jp">数字だけでローマ字入力</span>
+      </button>
+    </div>
+    <button id="btn-home-from-study" class="btn btn-secondary">
+      &larr; Home <span class="jp">ホーム</span>
+    </button>
+  </section>
+
+  <!-- MATCHING SCREEN -->
+  <section id="screen-match" class="screen">
+    <h2 id="match-title">Matching <span class="jp">マッチング</span></h2>
+    <p class="instructions">Tap a card on the left, then tap its match on the right.</p>
+    <p class="instructions jp">左のカードをタップしてから、対応する右のカードをタップしてください。</p>
+    <div id="match-board" class="match-board"></div>
+  </section>
+
+  <!-- TYPING SCREEN -->
+  <section id="screen-type" class="screen">
+    <h2 id="type-title">Type the Kanji <span class="jp">漢字入力</span></h2>
+    <p id="type-instructions-en" class="instructions">Type the kanji for the number shown.</p>
+    <p id="type-instructions-jp" class="instructions jp">表示された番号の漢字を入力してください。</p>
+    <div class="type-card">
+      <div id="type-progress" class="type-progress"></div>
+      <div id="type-prompt" class="type-prompt"></div>
+      <form id="type-form" autocomplete="off">
+        <input id="type-input" type="text" placeholder="漢字を入力 / kanji here" lang="ja" inputmode="text">
+        <button type="submit" class="btn btn-primary">Check <span class="jp">確認</span></button>
+      </form>
+      <div id="type-reveal" class="type-reveal jp"></div>
+      <div id="type-feedback" class="type-feedback" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- RESULT SCREEN -->
+  <section id="screen-result" class="screen">
+    <h2>Round Complete <span class="jp">終了</span></h2>
+    <p id="result-score" class="result-score"></p>
+    <div class="mode-buttons">
+      <button id="btn-again" class="btn btn-primary">
+        New Round <span class="jp">もう一度</span>
+      </button>
+      <button id="btn-home-from-result" class="btn btn-secondary">
+        Home <span class="jp">ホーム</span>
+      </button>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>Source: All Japan Kendo Federation Iai Instructional Manual (ZNKR)</p>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
