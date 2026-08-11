@@ -226,6 +226,17 @@ h2 .jp {
   padding: 2rem 1.25rem;
 }
 
+.flashcard-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.75rem;
+}
+
+.flashcard-actions .btn {
+  max-width: 360px;
+  width: 100%;
+}
+
 .flashcard-single .num {
   font-size: 2.4rem;
 }
