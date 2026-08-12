@@ -86,7 +86,6 @@ learnIaiWaza/
 ├── style.css    # Styling (dark theme, responsive layout)
 ├── data.js      # The 12 ZNKR forms: numbers, kanji, romaji, meanings
 ├── app.js       # Screen navigation and practice-mode logic
-├── assets/      # Dojo icon used in the header
 └── README.md
 ```
 

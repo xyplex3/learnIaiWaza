@@ -41,12 +41,6 @@ body {
   margin-bottom: 1.5rem;
 }
 
-.dojo-logo {
-  width: 56px;
-  height: 56px;
-  margin-bottom: 0.5rem;
-}
-
 .site-header h1 {
   font-size: clamp(1.3rem, 5vw, 1.8rem);
   margin: 0.5rem 0;
